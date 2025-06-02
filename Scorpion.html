@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signe du Scorpion - Astrologie</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+    .ram-icon {
+      position: relative;
+      display: inline-block;
+    }
+    .ram-icon::before {
+      content: "♏";
+      font-size: 2rem;
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #f43f5e;
+    }
+    .gradient-text {
+      background: linear-gradient(45deg, #f43f5e, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hover-grow {
+      transition: transform 0.3s ease;
+    }
+    .hover-grow:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-indigo-900 to-purple-900 text-white min-h-screen">
+  <div class="container mx-auto px-4 py-12">
+    <header class="text-center mb-16">
+      <div class="ram-icon mb-4"></div>
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 gradient-text animate-fade-in">
+        Le Signe du Scorpion
+      </h1>
+      <p class="text-xl md:text-2xl text-rose-200 animate-fade-in delay-1">
+        23 Octobre - 21 Novembre
+      </p>
+      <div class="w-24 h-1 bg-rose-400 mx-auto mt-6 rounded-full animate-fade-in delay-2"></div>
+    </header>
+
+    <main class="max-w-4xl mx-auto">
+      <section class="mb-16 bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl animate-fade-in delay-1">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-rose-300 flex items-center">
+          <i class="fas fa-fire mr-3"></i> L'Énergie du Scorpion
+        </h2>
+        <p class="text-lg leading-relaxed mb-6">
+          Signe d’Eau fixe gouverné par Pluton et Mars, le Scorpion est intense, profond et mystérieux. Il excelle dans les transformations et va toujours au fond des choses.
+        </p>
+        <div class="flex justify-center">
+          <div class="w-3/4 h-1 bg-gradient-to-r from-transparent via-rose-400 to-transparent"></div>
+        </div>
+      </section>
+
+      <section class="mb-16 animate-fade-in delay-2">
+        <h2 class="text-3xl font-bold mb-8 text-center text-green-300">
+          <i class="fas fa-star mr-2"></i> Les Qualités du Scorpion
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-green-900/30 p-6 rounded-xl hover-grow">
+            <h3 class="text-xl font-bold mb-2">Intense</h3>
+            <p>Vit chaque émotion pleinement.</p>
+          </div>
+          <div class="bg-green-900/30 p-6 rounded-xl hover-grow">
+            <h3 class="text-xl font-bold mb-2">Fidèle</h3>
+            <p>Protège farouchement ses proches.</p>
+          </div>
+          <div class="bg-green-900/30 p-6 rounded-xl hover-grow">
+            <h3 class="text-xl font-bold mb-2">Perspicace</h3>
+            <p>Décrypte ce qui échappe aux autres.</p>
+          </div>
+          <div class="bg-green-900/30 p-6 rounded-xl hover-grow">
+            <h3 class="text-xl font-bold mb-2">Déterminé</h3>
+            <p>Ne recule devant aucun obstacle.</p>
+          </div>
+          <div class="bg-green-900/30 p-6 rounded-xl hover-grow">
+            <h3 class="text-xl font-bold mb-2">Passionné</h3>
+            <p>S’investit à 200% dans ce qu’il aime.</p>
+          </div>
+          <div class="bg-green-900/30 p-6 rounded-xl hover-grow">
+            <h3 class="text-xl font-bold mb-2">Mystérieux</h3>
+            <p>Intrigant et fascinant à la fois.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-16 animate-fade-in delay-3">
+        <h2 class="text-3xl font-bold mb-8 text-center text-red-300">
+          <i class="fas fa-exclamation-triangle mr-2"></i> Les Défauts du Scorpion
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-red-900/30 p-6 rounded-xl hover-grow">
+            <h3 class="text-xl font-bold mb-2">Jaloux</h3>
+            <p>Possessif en amour comme en amitié.</p>
+          </div>
+          <div class="bg-red-900/30 p-6 rounded-xl hover-grow">
+            <h3 class="text-xl font-bold mb-2">Rancunier</h3>
+            <p>N’oublie jamais une trahison.</p>
+          </div>
+          <div class="bg-red-900/30 p-6 rounded-xl hover-grow">
+            <h3 class="text-xl font-bold mb-2">Secret</h3>
+            <p>Garde tout pour lui, même l’essentiel.</p>
+          </div>
+          <div class="bg-red-900/30 p-6 rounded-xl hover-grow">
+            <h3 class="text-xl font-bold mb-2">Manipulateur</h3>
+            <p>Sait influencer sans qu’on s’en rende compte.</p>
+          </div>
+          <div class="bg-red-900/30 p-6 rounded-xl hover-grow">
+            <h3 class="text-xl font-bold mb-2">Obsessionnel</h3>
+            <p>Fixé sur ses objectifs ou ses idées.</p>
+          </div>
+          <div class="bg-red-900/30 p-6 rounded-xl hover-grow">
+            <h3 class="text-xl font-bold mb-2">Destructeur</h3>
+            <p>Peut saboter ce qu’il construit.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-16 bg-purple-900/30 rounded-2xl p-8 backdrop-blur-sm animate-fade-in delay-3">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center text-purple-300">
+          <i class="fas fa-heartbeat mr-2"></i> Compatibilité Amoureuse
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6 text-center">
+          <div>
+            <h3 class="text-xl font-bold mb-2">Meilleures matches</h3>
+            <p>Poissons, Cancer</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Relations stimulantes</h3>
+            <p>Vierge, Capricorne</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Défis relationnels</h3>
+            <p>Lion, Gémeaux</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="text-center animate-fade-in delay-4">
+        <div class="bg-gradient-to-r from-rose-500 to-pink-600 rounded-2xl p-8 shadow-2xl hover-grow transform transition-all duration-500 hover:shadow-lg hover:shadow-rose-400/50">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">Découvrez votre thème astral complet</h2>
+          <p class="text-lg mb-6">Votre signe solaire (Scorpion) n'est qu'une partie de votre carte du ciel. Découvrez comment les autres planètes influencent votre personnalité et votre destinée.</p>
+          <a href="landing_page_aunomdesastres.html" class="inline-block bg-white text-rose-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-rose-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <i class="fas fa-shopping-cart mr-2"></i> Commander maintenant
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

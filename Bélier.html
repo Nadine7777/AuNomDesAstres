@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signe du Bélier - Astrologie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        
+        .ram-icon {
+            position: relative;
+            display: inline-block;
+        }
+        .ram-icon::before {
+            content: "♈";
+            font-size: 2rem;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #f97316;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #f97316, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hover-grow {
+            transition: transform 0.3s ease;
+        }
+        .hover-grow:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-indigo-900 to-purple-900 text-white min-h-screen">
+    <div class="container mx-auto px-4 py-12">
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <div class="ram-icon mb-4"></div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 gradient-text animate-fade-in">Le Signe du Bélier</h1>
+            <p class="text-xl md:text-2xl text-orange-200 animate-fade-in delay-1">21 Mars - 19 Avril</p>
+            <div class="w-24 h-1 bg-orange-500 mx-auto mt-6 rounded-full animate-fade-in delay-2"></div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="max-w-4xl mx-auto">
+            <!-- Introduction -->
+            <section class="mb-16 bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl animate-fade-in delay-1">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-orange-300 flex items-center">
+                    <i class="fas fa-fire mr-3"></i> L'Énergie du Bélier
+                </h2>
+                <p class="text-lg leading-relaxed mb-6">
+                    Premier signe du zodiaque, le Bélier symbolise le commencement, l'action et l'énergie pure. 
+                    Rulé par Mars, la planète de la passion et du combat, les natifs du Bélier sont des pionniers 
+                    nés, toujours prêts à se lancer dans de nouvelles aventures.
+                </p>
+                <div class="flex justify-center">
+                    <div class="w-3/4 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
+                </div>
+            </section>
+            
+            <!-- Qualités -->
+            <section class="mb-16 animate-fade-in delay-2">
+                <h2 class="text-3xl font-bold mb-8 text-center text-green-300">
+                    <i class="fas fa-star mr-2"></i> Les Qualités du Bélier
+                </h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-green-900/30 p-6 rounded-xl hover-grow">
+                        <div class="text-green-400 text-2xl mb-3">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Énergique</h3>
+                        <p>Une vitalité débordante et un enthousiasme contagieux.</p>
+                    </div>
+                    <div class="bg-green-900/30 p-6 rounded-xl hover-grow">
+                        <div class="text-green-400 text-2xl mb-3">
+                            <i class="fas fa-chess-king"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Leader naturel</h3>
+                        <p>Prend facilement les commandes et inspire les autres.</p>
+                    </div>
+                    <div class="bg-green-900/30 p-6 rounded-xl hover-grow">
+                        <div class="text-green-400 text-2xl mb-3">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Généreux</h3>
+                        <p>Donne sans compter et protège ses proches avec ferveur.</p>
+                    </div>
+                    <div class="bg-green-900/30 p-6 rounded-xl hover-grow">
+                        <div class="text-green-400 text-2xl mb-3">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Créatif</h3>
+                        <p>Une imagination fertile et des idées originales.</p>
+                    </div>
+                    <div class="bg-green-900/30 p-6 rounded-xl hover-grow">
+                        <div class="text-green-400 text-2xl mb-3">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Courageux</h3>
+                        <p>N'a peur de rien et relève tous les défis.</p>
+                    </div>
+                    <div class="bg-green-900/30 p-6 rounded-xl hover-grow">
+                        <div class="text-green-400 text-2xl mb-3">
+                            <i class="fas fa-laugh-beam"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Optimiste</h3>
+                        <p>Voir le verre à moitié plein est une seconde nature.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Défauts -->
+            <section class="mb-16 animate-fade-in delay-3">
+                <h2 class="text-3xl font-bold mb-8 text-center text-red-300">
+                    <i class="fas fa-exclamation-triangle mr-2"></i> Les Défauts du Bélier
+                </h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-red-900/30 p-6 rounded-xl hover-grow">
+                        <div class="text-red-400 text-2xl mb-3">
+                            <i class="fas fa-bomb"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Impulsif</h3>
+                        <p>Agit souvent sans réfléchir aux conséquences.</p>
+                    </div>
+                    <div class="bg-red-900/30 p-6 rounded-xl hover-grow">
+                        <div class="text-red-400 text-2xl mb-3">
+                            <i class="fas fa-hourglass-start"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Impatient</h3>
+                        <p>Déteste attendre et veut tout tout de suite.</p>
+                    </div>
+                    <div class="bg-red-900/30 p-6 rounded-xl hover-grow">
+                        <div class="text-red-400 text-2xl mb-3">
+                            <i class="fas fa-anger"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Colérique</h3>
+                        <p>Peut exploser pour un rien, puis oublier aussitôt.</p>
+                    </div>
+                    <div class="bg-red-900/30 p-6 rounded-xl hover-grow">
+                        <div class="text-red-400 text-2xl mb-3">
+                            <i class="fas fa-user-alt-slash"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Égoïste</h3>
+                        <p>Parfois trop centré sur ses propres besoins.</p>
+                    </div>
+                    <div class="bg-red-900/30 p-6 rounded-xl hover-grow">
+                        <div class="text-red-400 text-2xl mb-3">
+                            <i class="fas fa-chess-pawn"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Autoritaire</h3>
+                        <p>Aime diriger mais n'aime pas être dirigé.</p>
+                    </div>
+                    <div class="bg-red-900/30 p-6 rounded-xl hover-grow">
+                        <div class="text-red-400 text-2xl mb-3">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Inconstant</h3>
+                        <p>Peut abandonner un projet quand l'enthousiasme retombe.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Compatibility -->
+            <section class="mb-16 bg-purple-900/30 rounded-2xl p-8 backdrop-blur-sm animate-fade-in delay-3">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center text-purple-300">
+                    <i class="fas fa-heartbeat mr-2"></i> Compatibilité Amoureuse
+                </h2>
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <div>
+                        <div class="text-yellow-400 text-4xl mb-3">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Meilleures matches</h3>
+                        <p>Lion, Sagittaire</p>
+                    </div>
+                    <div>
+                        <div class="text-blue-400 text-4xl mb-3">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Relations stimulantes</h3>
+                        <p>Balance, Verseau</p>
+                    </div>
+                    <div>
+                        <div class="text-red-400 text-4xl mb-3">
+                            <i class="fas fa-skull-crossbones"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Défis relationnels</h3>
+                        <p>Cancer, Capricorne</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- CTA Section -->
+            <section class="text-center animate-fade-in delay-4">
+                <div class="bg-gradient-to-r from-orange-600 to-pink-600 rounded-2xl p-8 shadow-2xl hover-grow transform transition-all duration-500 hover:shadow-lg hover:shadow-orange-500/50">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Découvrez votre thème astral complet</h2>
+                    <p class="text-lg mb-6">Votre signe solaire (Bélier) n'est qu'une partie de votre carte du ciel. Découvrez comment les autres planètes influencent votre personnalité et votre destinée.</p>
+                    <a href="landing_page_aunomdesastres.html" class="inline-block bg-white text-orange-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-orange-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-shopping-cart mr-2"></i> Commander maintenant
+                    </a>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="mt-20 text-center text-gray-400 text-sm">
+            <p>© 2025 AuNomDesAstres - Tous droits réservés</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Simple animation trigger
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.animate-fade-in');
+            elements.forEach(el => {
+                el.style.opacity = '0';
+            });
+            
+            setTimeout(() => {
+                elements.forEach(el => {
+                    el.style.opacity = '1';
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>

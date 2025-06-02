@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuNomDesAstres - Votre guide astrologique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0e17;
+            color: #fffffe;
+        }
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        .zodiac-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .zodiac-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .horoscope-text {
+            height: 150px;
+            overflow-y: auto;
+        }
+        
+        /* Animation des étoiles */
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1e1e2e;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #7f5af0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Étoiles de fond -->
+    <div id="stars-container" class="fixed inset-0 overflow-hidden pointer-events-none"></div>
+    
+    <!-- Header -->
+    <header class="gradient-bg shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <i class="fas fa-star-and-crescent text-3xl text-purple-400 mr-3"></i>
+                    <h1 class="title-font text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+                        AuNomDesAstres
+                    </h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <img src="Thème natal.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="relative py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <h2 class="title-font text-4xl md:text-5xl font-bold mb-6">
+                        Découvrez ce que <span class="text-purple-400">les étoiles</span> vous réservent
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-8">
+                        Obtenez des prévisions astrologiques personnalisées basées sur votre signe du zodiaque. 
+                        Notre système analyse les mouvements planétaires pour vous guider vers votre meilleur avenir.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition flex items-center justify-center">
+                            <i class="fas fa-chart-line mr-2"></i> Votre horoscope du jour
+                        </button>
+                        <a href="landing_page_aunomdesastres.html"><button class="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition flex items-center justify-center">
+                            <i class="fas fa-book-open mr-2"></i>En savoir plus
+                        </button></a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute -top-10 -left-10 w-32 h-32 bg-purple-500 rounded-full opacity-20 blur-3xl"></div>
+                        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-pink-500 rounded-full opacity-20 blur-3xl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Zodiac Signs Section -->
+    <section class="py-16 bg-gray-900 bg-opacity-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="title-font text-3xl md:text-4xl font-bold mb-4">
+                    Les 12 signes du <span class="text-purple-400">zodiaque</span>
+                </h2>
+                <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+                    Chaque signe a ses propres caractéristiques, forces et faiblesses. Découvrez le vôtre !
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- Les cartes seront générées par JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Daily Horoscope -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="bg-gray-900 rounded-2xl p-8 shadow-xl">
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-1/3 mb-8 lg:mb-0">
+                        <h2 class="title-font text-3xl font-bold mb-6">
+                            Horoscope <span class="text-purple-400">du jour</span>
+                        </h2>
+                        <p class="text-gray-300 mb-6">
+                            Sélectionnez votre signe pour découvrir ce que les planètes ont prévu pour vous aujourd'hui.
+                        </p>
+                        <div class="relative">
+                            <select id="zodiac-select" class="w-full bg-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                                <option value="" disabled selected>Sélectionnez votre signe</option>
+                                <option value="aries">Bélier (21 Mars - 19 avril)</option>
+                                <option value="taurus">Taureau (20 avril - 20 mai)</option>
+                                <option value="gemini">Gémeaux (21 mai - 20 juin)</option>
+                                <option value="cancer">Cancer (21 juin - 22 juillet)</option>
+                                <option value="leo">Lion (23 juillet - 22 août)</option>
+                                <option value="virgo">Vierge (23 août - 22 septembre)</option>
+                                <option value="libra">Balance (23 septembre - 22 octobre)</option>
+                                <option value="scorpio">Scorpion (23 octobre - 21 novembre)</option>
+                                <option value="sagittarius">Sagittaire (22 novembre - 21 décembre)</option>
+                                <option value="capricorn">Capricorne (22 décembre - 19 janvier)</option>
+                                <option value="aquarius">Verseau (20 janvier - 18 février)</option>
+                                <option value="pisces">Poissons (19 février - 20 mars)</option>
+                            </select>
+                        </div>
+                        <div class="mt-6">
+                            <div class="flex items-center text-yellow-400 mb-2">
+                                <span class="font-medium">Amour</span>
+                                <div class="ml-2 flex" id="love-rating">
+                                    <!-- Étoiles générées par JS -->
+                                </div>
+                            </div>
+                            <div class="flex items-center text-blue-400 mb-2">
+                                <span class="font-medium">Travail</span>
+                                <div class="ml-2 flex" id="work-rating">
+                                    <!-- Étoiles générées par JS -->
+                                </div>
+                            </div>
+                            <div class="flex items-center text-green-400">
+                                <span class="font-medium">Santé</span>
+                                <div class="ml-2 flex" id="health-rating">
+                                    <!-- Étoiles générées par JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3 lg:pl-10">
+                        <div class="bg-gray-800 rounded-xl p-6 h-full">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="title-font text-2xl font-bold" id="selected-sign">
+                                    Sélectionnez un signe
+                                </h3>
+                                <span class="text-gray-400" id="current-date">
+                                    <!-- Date générée par JS -->
+                                </span>
+                            </div>
+                            <div class="horoscope-text text-gray-300" id="horoscope-text">
+                                <p class="text-center py-10 text-gray-500">
+                                    Votre horoscope quotidien apparaîtra ici après avoir sélectionné votre signe.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-6 border-t border-gray-700 flex justify-between items-center">
+                                <div class="text-sm text-gray-400">
+                                </div>
+                                <button class="flex items-center text-purple-400 hover:text-purple-300 transition">
+                                    <i class="fas fa-share-alt mr-2"></i> Partager
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-900 bg-opacity-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="title-font text-3xl md:text-4xl font-bold mb-4">
+                    Nos <span class="text-purple-400">services</span> astrologiques
+                </h2>
+                <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+                    Découvrez une gamme complète de services pour explorer votre destinée stellaire.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-900 rounded-xl p-8 zodiac-card">
+                    <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-moon text-2xl"></i>
+                    </div>
+                    <h3 class="title-font text-xl font-bold mb-3"><a href="landing_page_aunomdesastres.html">Thème natal complet</h3></a>
+                    <p class="text-gray-300">
+                        Une analyse approfondie de votre carte du ciel de naissance révélant vos traits de personnalité, vos défis et vos opportunités.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-900 rounded-xl p-8 zodiac-card">
+                    <div class="w-16 h-16 bg-pink-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-venus-mars text-2xl"></i>
+                    </div>
+                    <h3 class="title-font text-xl font-bold mb-3"><a href="landing_page_aunomdesastres.html">Compatibilité amoureuse</h3></a>
+                    <p class="text-gray-300">
+                        Découvrez comment vos signes s'harmonisent et obtenez des conseils pour améliorer votre relation amoureuse.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-900 rounded-xl p-8 zodiac-card">
+                    <div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-briefcase text-2xl"></i>
+                    </div>
+                    <h3 class="title-font text-xl font-bold mb-3"><a href="landing_page_aunomdesastres.html">Astrologie professionnelle</h3></a>
+                    <p class="text-gray-300">
+                        Identifiez les meilleures opportunités de carrière selon votre thème astral et les transits planétaires actuels.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-900 rounded-xl p-8 zodiac-card">
+                    <div class="w-16 h-16 bg-yellow-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-baby text-2xl"></i>
+                    </div>
+                    <h3 class="title-font text-xl font-bold mb-3"><a href="landing_page_aunomdesastres.html">Astrologie karmique</h3></a>
+                    <p class="text-gray-300">
+                        Explorez vos vies passées et les leçons karmiques que vous êtes venu apprendre dans cette incarnation.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-900 rounded-xl p-8 zodiac-card">
+                    <div class="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-calendar-alt text-2xl"></i>
+                    </div>
+                    <h3 class="title-font text-xl font-bold mb-3"><a href="landing_page_aunomdesastres.html">Prévision annuelles</h3></a>
+                    <p class="text-gray-300">
+                        Un aperçu complet de votre année à venir avec les périodes clés pour l'amour, le travail et la santé.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-900 rounded-xl p-8 zodiac-card">
+                    <div class="w-16 h-16 bg-red-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-question text-2xl"></i>
+                    </div>
+                    <h3 class="title-font text-xl font-bold mb-3"><a href="landing_page_aunomdesastres.html">Consultation privée</h3></a>
+                    <p class="text-gray-300">
+                        Une séance personnalisée avec moi pour répondre à vos questions spécifiques.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="bg-gradient-to-r from-purple-900 to-blue-900 rounded-2xl p-8 md:p-12 shadow-xl">
+                <div class="flex flex-col lg:flex-row items-center">
+                    <div class="lg:w-1/2 mb-8 lg:mb-0">
+                        <h2 class="title-font text-3xl font-bold mb-4">
+                            Recevez votre <span class="text-purple-300">horoscope</span> par email
+                        </h2>
+                        <p class="text-gray-300 max-w-lg">
+                            Abonnez-vous à notre newsletter astrologique et recevez chaque semaine des prévisions personnalisées, des conseils lunaires et des analyses planétaires.
+                        </p>
+                    </div>
+                    <div class="lg:w-1/2 w-full">
+                        <form class="flex flex-col sm:flex-row gap-4">
+                            <input type="email" placeholder="Votre adresse email" class="flex-grow px-4 py-3 rounded-lg bg-gray-800 bg-opacity-50 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition whitespace-nowrap">
+                                <i class="fas fa-paper-plane mr-2"></i>S'abonner
+                            </button>
+                        </form>
+                        <div class="mt-4 text-sm text-gray-300 flex items-center">
+                            <i class="fas fa-lock mr-2"></i> Nous ne partagerons jamais votre email.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-star-and-crescent text-2xl text-purple-400 mr-2"></i>
+                        <span class="title-font text-xl font-bold">AuNomDesAstres</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Votre guide complet pour naviguer à travers les énergies cosmiques et comprendre votre destinée.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="title-font text-lg font-bold mb-4 text-white">Navigation</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Accueil</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Horoscope du jour</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Signes du zodiaque</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Nos services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Blog astrologique</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="title-font text-lg font-bold mb-4 text-white">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="landing_page_aunomdesastres.html" class="text-gray-400 hover:text-purple-400 transition">Thème natal</a></li>
+                        <li><a href="landing_page_aunomdesastres.html" class="text-gray-400 hover:text-purple-400 transition">Compatibilité</a></li>
+                        <li><a href="landing_page_aunomdesastres.html" class="text-gray-400 hover:text-purple-400 transition">Astrologie karmique</a></li>
+                        <li><a href="landing_page_aunomdesastres.html" class="text-gray-400 hover:text-purple-400 transition">Prévisions annuelles</a></li>
+                        <li><a href="landing_page_aunomdesastres.html" class="text-gray-400 hover:text-purple-400 transition">Consultation privée</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="title-font text-lg font-bold mb-4 text-white">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2 text-purple-400"></i> 12 Rue des Étoiles, Paris
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone-alt mr-2 text-purple-400"></i> 0784271337
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2 text-purple-400"></i> nadine.pro777@gmail.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2025 AuNomDesAstres. Tous droits réservés.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-gray-300 text-sm transition">Mentions légales</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-300 text-sm transition">Politique de confidentialité</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-300 text-sm transition">Conditions d'utilisation</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Générer des étoiles en fond
+        function createStars() {
+            const container = document.getElementById('stars-container');
+            const starCount = 100;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Taille aléatoire entre 1 et 3px
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Position aléatoire
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Animation delay aléatoire
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                container.appendChild(star);
+            }
+        }
+        
+        // Données des signes du zodiaque
+        const zodiacData = [
+            { name: "Bélier", date: "21 mars - 19 avril", icon: "fa-fire", color: "bg-red-500" },
+            { name: "Taureau", date: "20 avril - 20 mai", icon: "fa-paw", color: "bg-green-500" },
+            { name: "Gémeaux", date: "21 mai - 20 juin", icon: "fa-comments", color: "bg-yellow-500" },
+            { name: "Cancer", date: "21 juin - 22 juillet", icon: "fa-moon", color: "bg-blue-400" },
+            { name: "Lion", date: "23 juillet - 22 août", icon: "fa-sun", color: "bg-yellow-400" },
+            { name: "Vierge", date: "23 août - 22 septembre", icon: "fa-leaf", color: "bg-green-400" },
+            { name: "Balance", date: "23 septembre - 22 octobre", icon: "fa-balance-scale", color: "bg-pink-400" },
+            { name: "Scorpion", date: "23 octobre - 21 novembre", icon: "fa-bug", color: "bg-purple-600" },
+            { name: "Sagittaire", date: "22 novembre - 21 décembre", icon: "fa-arrow-right", color: "bg-purple-400" },
+            { name: "Capricorne", date: "22 décembre - 19 janvier", icon: "fa-mountain", color: "bg-gray-500" },
+            { name: "Verseau", date: "20 janvier - 18 février", icon: "fa-tint", color: "bg-blue-300" },
+            { name: "Poissons", date: "19 février - 20 mars", icon: "fa-fish", color: "bg-blue-500" }
+        ];
+        
+        // Générer les cartes des signes du zodiaque
+        function generateZodiacCards() {
+    const container = document.querySelector('.grid.grid-cols-2.sm\\:grid-cols-3.md\\:grid-cols-4.lg\\:grid-cols-6.gap-6');
+    
+    zodiacData.forEach(sign => {
+        // Création du lien
+        const link = document.createElement('a');
+        link.href = `${sign.name}.html`;
+        link.className = 'block';
+
+        // Création de la carte
+        const card = document.createElement('div');
+        card.className = 'bg-gray-900 rounded-xl p-6 text-center zodiac-card cursor-pointer hover:opacity-90 transition';
+
+        // Icône
+        const iconWrapper = document.createElement('div');
+        iconWrapper.className = `w-16 h-16 ${sign.color} rounded-full flex items-center justify-center mx-auto mb-4`;
+
+        const icon = document.createElement('i');
+        icon.className = `fas ${sign.icon} text-2xl text-white`;
+
+        iconWrapper.appendChild(icon);
+
+        // Titre
+        const title = document.createElement('h3');
+        title.className = 'title-font text-lg font-bold mb-1';
+        title.textContent = sign.name;
+
+        // Date
+        const date = document.createElement('p');
+        date.className = 'text-gray-400 text-sm';
+        date.textContent = sign.date;
+
+        // Ajout des éléments dans la carte
+        card.appendChild(iconWrapper);
+        card.appendChild(title);
+        card.appendChild(date);
+
+        // La carte devient le contenu du lien
+        link.appendChild(card);
+
+        // Ajout dans le container
+        container.appendChild(link);
+    });
+}
+            
+
+        
+        // Textes d'horoscope aléatoires
+        const horoscopeTexts = {
+            aries: "Aujourd'hui, Mars influence votre énergie. C'est le moment de prendre des initiatives audacieuses. En amour, soyez direct mais attention à ne pas être trop impatient. Professionnellement, une opportunité inattendue pourrait se présenter.",
+            taurus: "Vénus vous apporte harmonie aujourd'hui. Profitez des plaisirs simples de la vie. Financièrement, évitez les dépenses impulsives. Une rencontre pourrait changer votre perspective sur une situation personnelle.",
+            gemini: "Mercury stimule votre communication. Excellente journée pour les échanges et les négociations. Attention aux malentendus avec un proche. Une idée brillante pourrait vous venir, notez-la !",
+            cancer: "La Lune accentue votre sensibilité aujourd'hui. Prenez du temps pour vous recharger émotionnellement. Un problème familial pourrait trouver sa solution. Écoutez votre intuition pour des décisions importantes.",
+            leo: "Le Soleil illumine votre journée. Votre charisme naturel attire les regards. Professionnellement, mettez vos talents en avant. Une surprise agréable pourrait venir d'une personne inattendue.",
+            virgo: "Votre sens du détail est renforcé aujourd'hui. Parfait pour organiser ou planifier. Santé : pensez à une routine plus équilibrée. Une ancienne connaissance pourrait réapparaître avec une proposition intéressante.",
+            libra: "Journée idéale pour résoudre des conflits ou prendre des décisions équilibrées. Votre charme naturel fonctionne à merveille en société. Attention à ne pas trop procrastiner sur un projet important.",
+            scorpio: "Pluton intensifie vos perceptions aujourd'hui. Vous pourriez découvrir une vérité cachée. Financièrement, soyez prudent avec les investissements. Une passion ancienne pourrait refaire surface.",
+            sagittarius: "Jupiter élargit vos horizons. Idéal pour voyager ou apprendre quelque chose de nouveau. Une rencontre pourrait vous inspirer professionnellement. Évitez les promesses que vous ne pourrez pas tenir.",
+            capricorn: "Saturne vous pousse à être plus discipliné. Bon moment pour établir des objectifs à long terme. Une figure d'autorité pourrait vous offrir un conseil précieux. Ne négligez pas votre vie sociale.",
+            aquarius: "Uranus stimule votre originalité aujourd'hui. Vos idées non conventionnelles pourraient surprendre votre entourage. Attention aux appareils électroniques qui pourraient mal fonctionner. Une amitié prend un tour inattendu.",
+            pisces: "Neptune approfondit votre intuition aujourd'hui. Votre créativité est à son apogée. Évitez de fuir la réalité face à un problème. Une synchronicité significative pourrait se produire."
+        };
+        
+        // Mettre à jour l'horoscope
+        function updateHoroscope() {
+            const select = document.getElementById('zodiac-select');
+            const selectedSign = select.value;
+            const signName = select.options[select.selectedIndex].text.split(' ')[0];
+            
+            if (!selectedSign) return;
+            
+            // Mettre à jour le nom du signe
+            document.getElementById('selected-sign').textContent = signName;
+            
+            // Mettre à jour le texte d'horoscope
+            document.getElementById('horoscope-text').innerHTML = `<p>${horoscopeTexts[selectedSign]}</p>`;
+            
+            // Générer des notes aléatoires
+            generateRandomRatings();
+        }
+        
+        // Générer des notes aléatoires
+        function generateRandomRatings() {
+            const ratings = {
+                love: Math.floor(Math.random() * 5) + 1,
+                work: Math.floor(Math.random() * 5) + 1,
+                health: Math.floor(Math.random() * 5) + 1
+            };
+            
+            // Générer les étoiles pour chaque catégorie
+            generateStars('love-rating', ratings.love);
+            generateStars('work-rating', ratings.work);
+            generateStars('health-rating', ratings.health);
+        }
+        
+        // Générer des étoiles de notation
+        function generateStars(elementId, rating) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = '';
+            
+            for (let i = 1; i <= 5; i++) {
+                const star = document.createElement('i');
+                star.className = i <= rating ? 'fas fa-star' : 'far fa-star';
+                container.appendChild(star);
+            }
+        }
+        
+        // Mettre à jour la date actuelle
+        function updateCurrentDate() {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const today = new Date();
+            document.getElementById('current-date').textContent = today.toLocaleDateString('fr-FR', options);
+        }
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            generateZodiacCards();
+            updateCurrentDate();
+            
+            // Écouter les changements de sélection du signe
+            document.getElementById('zodiac-select').addEventListener('change', updateHoroscope);
+            
+            // Générer un horoscope aléatoire au chargement
+            const randomSign = Object.keys(horoscopeTexts)[Math.floor(Math.random() * Object.keys(horoscopeTexts).length)];
+            document.getElementById('zodiac-select').value = randomSign;
+            updateHoroscope();
+        });
+    </script>
+</body>
+</html>
